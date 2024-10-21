@@ -26,3 +26,14 @@ variable "ssh_public_key" {
   description = "SSH public key for EC2 instances"
   type        = string
 }
+variable "aws_access_key" {
+  description = "AWS access key"
+  type        = string
+  sensitive   = true
+}
+
+variable "aws_secret_key" {
+  description = "AWS secret key"
+  type        = string
+  sensitive   = true
+}
