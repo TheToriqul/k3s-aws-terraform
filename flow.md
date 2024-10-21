@@ -23,7 +23,3 @@ flowchart TD
     style I fill:#009688, stroke:#fff, stroke-width:2px
     style J fill:#FF9800, stroke:#fff, stroke-width:2px
 ```
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@latest/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true });
-</script>
