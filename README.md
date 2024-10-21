@@ -16,39 +16,39 @@ The infrastructure consists of a highly available setup deployed across multiple
 
 ```mermaid
 graph TD
-            subgraph Public Subnet
-                A[fa:fa-globe NGINX Load Balancer]
-            end
+    subgraph Public Subnet
+        A[fa:fa-globe NGINX Load Balancer]
+    end
+    
+    subgraph Private Subnet
+        B1[fa:fa-server K3s Master Node]
+        B2[fa:fa-server K3s Worker Node 1]
+        B3[fa:fa-server K3s Worker Node 2]
+    end
+    
+    subgraph Infrastructure
+        T[fa:fa-tools Terraform Blueprint]
+    end
 
-            subgraph Private Subnet
-                B1[fa:fa-server K3s Master Node]
-                B2[fa:fa-server K3s Worker Node 1]
-                B3[fa:fa-server K3s Worker Node 2]
-            end
+    subgraph Cloud Provider
+        T --> I1[fa:fa-cloud Cloud Networking] 
+        I1 --> PublicSubnet[Public Subnet]
+        I1 --> PrivateSubnet[Private Subnet]
+    end
 
-            subgraph Infrastructure
-                T[fa:fa-tools Terraform Blueprint]
-            end
+    A -->|HTTP/HTTPS Traffic| B1
+    B1 --> B2
+    B1 --> B3
 
-            subgraph Cloud Provider
-                T --> I1[fa:fa-cloud Cloud Networking]
-                I1 --> PublicSubnet[Public Subnet]
-                I1 --> PrivateSubnet[Private Subnet]
-            end
-
-            A -->|HTTP/HTTPS Traffic| B1
-            B1 --> B2
-            B1 --> B3
-
-            %% Styling
-            style A fill:#FF9800, stroke:#fff, stroke-width:2px, font-size:16px
-            style B1 fill:#2196F3, stroke:#fff, stroke-width:2px, font-size:16px
-            style B2 fill:#009688, stroke:#fff, stroke-width:2px, font-size:16px
-            style B3 fill:#009688, stroke:#fff, stroke-width:2px, font-size:16px
-            style T fill:#4CAF50, stroke:#fff, stroke-width:2px, font-size:16px
-            style I1 fill:#8BC34A, stroke:#fff, stroke-width:2px, font-size:16px
-            style PublicSubnet fill:#FF5722, stroke:#fff, stroke-width:2px, font-size:16px
-            style PrivateSubnet fill:#9C27B0, stroke:#fff, stroke-width:2px, font-size:16px
+    %% Styling
+    style A fill:#FF9800, stroke:#fff, stroke-width:2px, font-size:16px
+    style B1 fill:#2196F3, stroke:#fff, stroke-width:2px, font-size:16px
+    style B2 fill:#009688, stroke:#fff, stroke-width:2px, font-size:16px
+    style B3 fill:#009688, stroke:#fff, stroke-width:2px, font-size:16px
+    style T fill:#4CAF50, stroke:#fff, stroke-width:2px, font-size:16px
+    style I1 fill:#8BC34A, stroke:#fff, stroke-width:2px, font-size:16px
+    style PublicSubnet fill:#FF5722, stroke:#fff, stroke-width:2px, font-size:16px
+    style PrivateSubnet fill:#9C27B0, stroke:#fff, stroke-width:2px, font-size:16px
 ```
 
 ## 💻 Technical Stack
