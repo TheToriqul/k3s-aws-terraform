@@ -139,8 +139,7 @@ terraform init
 
 3. Configure variables
 ```bash
-cp terraform.tfvars.example terraform.tfvars
-# Edit terraform.tfvars with your values
+# create terraform.tfvars with your values
 ```
 
 4. Apply the configuration
