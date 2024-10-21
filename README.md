@@ -16,66 +16,80 @@ The infrastructure consists of a highly available setup deployed across multiple
 
 ```mermaid
 graph TD
-    subgraph Public Subnet
-        A[fa:fa-globe NGINX Load Balancer]
-    end
-    
-    subgraph Private Subnet
-        B1[fa:fa-server K3s Master Node]
-        B2[fa:fa-server K3s Worker Node 1]
-        B3[fa:fa-server K3s Worker Node 2]
-    end
-    
-    subgraph Infrastructure
-        T[fa:fa-tools Terraform Blueprint]
-    end
+            subgraph Public Subnet
+                A[fa:fa-globe NGINX Load Balancer]
+            end
 
-    subgraph Cloud Provider
-        T --> I1[fa:fa-cloud Cloud Networking] 
-        I1 --> PublicSubnet[Public Subnet]
-        I1 --> PrivateSubnet[Private Subnet]
-    end
+            subgraph Private Subnet
+                B1[fa:fa-server K3s Master Node]
+                B2[fa:fa-server K3s Worker Node 1]
+                B3[fa:fa-server K3s Worker Node 2]
+            end
 
-    A -->|HTTP/HTTPS Traffic| B1
-    B1 --> B2
-    B1 --> B3
+            subgraph Infrastructure
+                T[fa:fa-tools Terraform Blueprint]
+            end
+
+            subgraph Cloud Provider
+                T --> I1[fa:fa-cloud Cloud Networking]
+                I1 --> PublicSubnet[Public Subnet]
+                I1 --> PrivateSubnet[Private Subnet]
+            end
+
+            A -->|HTTP/HTTPS Traffic| B1
+            B1 --> B2
+            B1 --> B3
+
+            %% Styling
+            style A fill:#FF9800, stroke:#fff, stroke-width:2px, font-size:16px
+            style B1 fill:#2196F3, stroke:#fff, stroke-width:2px, font-size:16px
+            style B2 fill:#009688, stroke:#fff, stroke-width:2px, font-size:16px
+            style B3 fill:#009688, stroke:#fff, stroke-width:2px, font-size:16px
+            style T fill:#4CAF50, stroke:#fff, stroke-width:2px, font-size:16px
+            style I1 fill:#8BC34A, stroke:#fff, stroke-width:2px, font-size:16px
+            style PublicSubnet fill:#FF5722, stroke:#fff, stroke-width:2px, font-size:16px
+            style PrivateSubnet fill:#9C27B0, stroke:#fff, stroke-width:2px, font-size:16px
 ```
 
 ## 💻 Technical Stack
 
-- **Infrastructure**: 
+- **Infrastructure**:
   - Terraform v1.0+
   - AWS Provider ~> 4.0
-- **Compute**: 
+- **Compute**:
   - EC2 t3.medium instances
   - Ubuntu 20.04 LTS
-- **Networking**: 
+- **Networking**:
   - Custom VPC
   - Public/Private Subnets
   - NAT Gateway
   - Application Load Balancer
-- **Container Orchestration**: 
+- **Container Orchestration**:
   - K3s v1.21+
   - NGINX Ingress Controller
 
 ## ⭐ Key Features
 
 1. **Automated Infrastructure**
+
    - Complete IaC implementation
    - Modular Terraform structure
    - Reusable components
 
 2. **Network Security**
+
    - Private subnet isolation
    - Security group policies
    - NAT Gateway configuration
 
 3. **High Availability**
+
    - Multi-AZ deployment
    - Load balancer integration
    - Automated health checks
 
 4. **Kubernetes Platform**
+
    - K3s lightweight distribution
    - NGINX ingress controller
    - Automated cluster setup
@@ -88,6 +102,7 @@ graph TD
 ## 📚 Learning Journey
 
 ### Technical Mastery:
+
 1. Advanced Terraform module design
 2. AWS networking concepts and implementation
 3. Kubernetes deployment automation
@@ -95,6 +110,7 @@ graph TD
 5. High availability architecture patterns
 
 ### Professional Development:
+
 1. Infrastructure as Code methodology
 2. Cloud architecture design
 3. Security-first thinking
@@ -120,32 +136,39 @@ graph TD
 <summary>View Installation Details</summary>
 
 ### Prerequisites
+
 - AWS CLI configured
 - Terraform >= 1.0.0
 - SSH key pair
 - AWS credentials
 
 ### Setup Steps
+
 1. Clone the repository
+
 ```bash
 git clone https://github.com/TheToriqul/k3s-aws-terraform.git
 cd k3s-aws-terraform
 ```
 
 2. Initialize Terraform
+
 ```bash
 terraform init
 ```
 
 3. Configure variables
+
 ```bash
 # create terraform.tfvars with your values
 ```
 
 4. Apply the configuration
+
 ```bash
 terraform apply
 ```
+
 </details>
 
 ## 📫 Contact
