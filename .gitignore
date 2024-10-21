@@ -4,15 +4,12 @@
 # .tfstate files
 *.tfstate
 *.tfstate.*
-<<<<<<< HEAD
 *.tfvars
 !terraform.tfvars
 .terraform
 *.tfstate
 *.tfstate.*
 tfplan
-=======
->>>>>>> 14d3b53d19205b6a8ace655b63c307f149b88a9a
 
 # Crash log files
 crash.log
